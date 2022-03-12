@@ -4,15 +4,11 @@
         "es6": true,
         "node": true
     },
-    "extends": [
-        "airbnb-base"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+    "ecmaFeatures": {
+        "modules": true
     },
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": "latest"
     },
     "rules": {
         "semi":"warn",
