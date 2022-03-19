@@ -1,24 +1,24 @@
-const res = require("express/lib/response");
-const mysql = require("mysql2");
+const { createPool } = require("mysql2");
+const dotenv = require("dotenv");
+dotenv.config({ path: `${__dirname}/../env/.env` });
+
+const envVariables = process.env;
 
 // Function connecting app to mysql
-const connectToDB = (host, user, password, database) => {
-  try {
-    mysql
-      .createConnection({
-        host: host,
-        user: user,
-        password: password,
-        database: database,
-      })
-      .connect((err) => {
-        err && console.log(err);
-        console.log("Connected to mysql database!");
-      });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json("Server Error!");
-  }
-};
+const connectionPool = createPool({
+  host: envVariables.HOST,
+  user: envVariables.USER,
+  password: envVariables.PASSWORD,
+  database: envVariables.DATABASE,
+  connectionLimit: 10,
+});
 
-module.exports = connectToDB;
+connectionPool.getConnection((err) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log("Connected to MySql");
+});
+
+module.exports = connectionPool;
