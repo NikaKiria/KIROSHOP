@@ -2,19 +2,17 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config({ path: `${__dirname}/env/.env` });
 // Import connector function (connects to mysql)
-const connectToDB = require("./database/dbconnect.js");
+const connectionPool = require("./database/dbconnect.js");
 
 // Create express app
 const app = express();
 
-// Connect to DB
-const envVariables = process.env;
-connectToDB(
-  envVariables.HOST,
-  envVariables.USER,
-  envVariables.PASSWORD,
-  envVariables.DATABASE
-);
+// app.get("/", (req, res) => {
+//   connectionPool.query("SELECT * FROM users", (err, result, fields) => {
+//     err && console.log(err);
+//     res.status(200).json(result);
+//   });
+// });
 
 // Listen to port
 const port = process.env.PORT || 5000;
