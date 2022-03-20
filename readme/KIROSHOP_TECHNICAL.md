@@ -9,6 +9,9 @@
 - express
 - mysql2
 - dotenv
+- jwt
+- bcrypt
+- uuid
 - eslint
 - prettier
 
