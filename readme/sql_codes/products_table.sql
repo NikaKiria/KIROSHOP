@@ -1,5 +1,5 @@
 CREATE TABLE products(
-	product_id VARCHAR(50) UNIQUE NOT NULL,
+    product_id VARCHAR(50) UNIQUE NOT NULL,
     category VARCHAR(50) NOT NULL,
     brand VARCHAR(50) NOT NULL,
     price DECIMAL NOT NULL,
