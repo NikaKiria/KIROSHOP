@@ -7,10 +7,10 @@
 - UX
   - Register
   - Login
-  - Edit user info
-  - Purchase
-  - Filter by categories
-    - Clothing
-    - Footwear
-    - Accessories
-    - Home&Outdoor
+  - Edit User Info
+  - Create Order
+  - Edit Order
+  - Delete Order
+  - Create Product
+  - Edit Product
+  - Delete Product
