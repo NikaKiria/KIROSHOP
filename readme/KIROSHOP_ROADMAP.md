@@ -1,6 +1,6 @@
 1. Create basic express app /// DONE
-2. Connect To DB (Mysql) /// TODO:
-3. Create models /// TODO:
+2. Connect To DB (Mysql) /// DONE
+3. Create models /// WIP
 4. Create routes /// TODO:
 5. Security /// TODO:
 
