@@ -1,6 +1,6 @@
 CREATE TABLE order_items(
-	order_item_id BIGINT UNIQUE AUTO_INCREMENT NOT NULL,
-	order_id BIGINT NOT NULL,
+    order_item_id BIGINT UNIQUE AUTO_INCREMENT NOT NULL,
+    order_id BIGINT NOT NULL,
     item_id BIGINT NOT NULL,
     item_price DECIMAL NOT NULL,
     item_special_price DECIMAL,

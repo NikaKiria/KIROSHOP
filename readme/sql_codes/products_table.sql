@@ -1,6 +1,6 @@
 CREATE TABLE products(
-	product_id BIGINT UNIQUE AUTO_INCREMENT NOT NULL,
-	category VARCHAR(50) NOT NULL,
+    product_id BIGINT UNIQUE AUTO_INCREMENT NOT NULL,
+    category VARCHAR(50) NOT NULL,
     brand VARCHAR(50) NOT NULL,
     price DECIMAL NOT NULL,
     special_price DECIMAL,

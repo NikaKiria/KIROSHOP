@@ -1,6 +1,6 @@
 CREATE TABLE users_table(
-	user_id BIGINT UNIQUE AUTO_INCREMENT NOT NULL,
-	firstname VARCHAR(50) NOT NULL,
+    user_id BIGINT UNIQUE AUTO_INCREMENT NOT NULL,
+    firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     user_password VARCHAR(50) NOT NULL,
