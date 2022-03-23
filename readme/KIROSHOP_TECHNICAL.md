@@ -10,6 +10,8 @@
 - mysql2
 - dotenv
 - jwt
+- joi
+- escape-html
 - bcrypt
 - uuid
 - eslint
