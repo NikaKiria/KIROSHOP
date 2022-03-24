@@ -78,9 +78,9 @@ router.post("/register", async (req, res) => {
             '${escapedUserInfo.user_password}',
             ${escapedUserInfo.id_number},
             '${escapedUserInfo.user_address}',
-            ${escapedUserInfo.card_number || null},
-            ${escapedUserInfo.card_validity_period || null},
-            ${escapedUserInfo.cvc_cvv || null}
+            '${escapedUserInfo.card_number || ""}',
+            '${escapedUserInfo.card_validity_period || ""}',
+            '${escapedUserInfo.cvc_cvv || ""}'
         )`,
       (err) => {
         if (err) {
