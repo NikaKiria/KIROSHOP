@@ -34,7 +34,6 @@ const escapeHTML = (rawUserInfo) => {
     rawUserInfo[keyForValue] = property;
     i++;
   });
-  console.log(rawUserInfo);
   return rawUserInfo;
 };
 
@@ -52,7 +51,6 @@ router.post("/register", async (req, res) => {
     const rawUserInfo = await req.body;
     // Escape html tags in provided info
     const escapedUserInfo = await escapeHTML(rawUserInfo);
-    console.log(escapedUserInfo);
     // Validate raw user info
     const validationResult = newUserSchema.validate(escapedUserInfo);
     if (validationResult.error) {
@@ -80,9 +78,9 @@ router.post("/register", async (req, res) => {
             '${escapedUserInfo.user_password}',
             ${escapedUserInfo.id_number},
             '${escapedUserInfo.user_address}',
-            '${escapedUserInfo.card_number || null}',
-            '${escapedUserInfo.card_validity_period || null}',
-            '${escapedUserInfo.cvc_cvv || null}'
+            ${escapedUserInfo.card_number || null},
+            ${escapedUserInfo.card_validity_period || null},
+            ${escapedUserInfo.cvc_cvv || null}
         )`,
       (err) => {
         if (err) {
