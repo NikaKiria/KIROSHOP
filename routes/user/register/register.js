@@ -46,6 +46,35 @@ const hashPassword = async (escapedUserInfo) => {
   );
 };
 
+// Function that adds record to db or returns error
+const createRecord = async (connectionPool, escapedUserInfo) => {
+  const creationResult = await connectionPool.query(
+    `INSERT INTO users (
+        firstname,
+        lastname,
+        email,
+        user_password,
+        id_number,
+        user_address,
+        card_number,
+        card_validity_period,
+        cvc_cvv
+      ) 
+      VALUES (
+          '${escapedUserInfo.firstname}',
+          '${escapedUserInfo.lastname}',
+          '${escapedUserInfo.email}',
+          '${escapedUserInfo.user_password}',
+          ${escapedUserInfo.id_number},
+          '${escapedUserInfo.user_address}',
+          '${escapedUserInfo.card_number || ""}',
+          '${escapedUserInfo.card_validity_period || ""}',
+          '${escapedUserInfo.cvc_cvv || ""}'
+      )`
+  );
+  return creationResult;
+};
+
 router.post("/register", async (req, res) => {
   try {
     const rawUserInfo = await req.body;
@@ -54,44 +83,19 @@ router.post("/register", async (req, res) => {
     // Validate raw user info
     const validationResult = newUserSchema.validate(escapedUserInfo);
     if (validationResult.error) {
-      return res.status(400).json(validationResult.error);
+      return res.status(400).json(validationResult.error.details[0].message);
     }
     // Hash password
     await hashPassword(escapedUserInfo);
     // Create new user in database
-    connectionPool.query(
-      `INSERT INTO users (
-          firstname,
-          lastname,
-          email,
-          user_password,
-          id_number,
-          user_address,
-          card_number,
-          card_validity_period,
-          cvc_cvv
-        ) 
-        VALUES (
-            '${escapedUserInfo.firstname}',
-            '${escapedUserInfo.lastname}',
-            '${escapedUserInfo.email}',
-            '${escapedUserInfo.user_password}',
-            ${escapedUserInfo.id_number},
-            '${escapedUserInfo.user_address}',
-            '${escapedUserInfo.card_number || ""}',
-            '${escapedUserInfo.card_validity_period || ""}',
-            '${escapedUserInfo.cvc_cvv || ""}'
-        )`,
-      (err) => {
-        if (err) {
-          return res.status(404).json("Bad Request!");
-        } else {
-          return res.status(201).json("User Created!");
-        }
-      }
-    );
+    const createdRecord = await createRecord(connectionPool, escapedUserInfo);
+    if (createdRecord) {
+      return res.status(200).json("User Registered!");
+    } else {
+      return res.status(500).json("Something Went Wrong!");
+    }
   } catch (err) {
-    return res.status(500).json("Server Error!");
+    return res.status(500).json(err.message);
   }
 });
 
