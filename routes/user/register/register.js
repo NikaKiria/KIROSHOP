@@ -18,11 +18,16 @@ const newUserSchema = joi.object().keys({
     .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
     .required(),
   repeat_password: joi.ref("password"),
-  id_number: joi.number().integer().required(),
+  id_number: joi
+    .number()
+    .integer()
+    .min(10000000000)
+    .max(99999999999)
+    .required(),
   user_address: joi.string().required(),
   card_number: joi.string(),
   card_validity_period: joi.string(),
-  cvc_cvv: joi.string(),
+  cvc_cvv: joi.string().min(3).max(3),
 });
 
 // Escape html tags in provided object's properties
@@ -46,7 +51,7 @@ const hashPassword = async (escapedUserInfo) => {
   );
 };
 
-// Function that adds record to db or returns error
+// Function that adds record to db
 const createRecord = async (connectionPool, escapedUserInfo) => {
   const creationResult = await connectionPool.query(
     `INSERT INTO users (
