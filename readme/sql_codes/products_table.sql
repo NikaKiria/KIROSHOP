@@ -9,7 +9,7 @@ CREATE TABLE products(
     description_geo VARCHAR(1024),
     name_en VARCHAR(50),
     description_en VARCHAR(1024),
-    image VARCHAR(64) NOT NULL,
-    create_date TIMESTAMP NOT NULL,
+    image VARCHAR(3000) NOT NULL,
+    create_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY (product_id)
 ) AUTO_INCREMENT = 3 CHARSET = utf8
