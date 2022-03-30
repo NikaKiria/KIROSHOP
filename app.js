@@ -7,6 +7,7 @@ const loginRoute = require("./routes/user/login/login.js");
 const updateUserRoute = require("./routes/user/update-user/updateUser.js");
 const deleteUserRoute = require("./routes/user/delete-user/deleteUser.js");
 const createProductRoute = require("./routes/products/create-product/createProduct.js");
+const getProductsRoute = require("./routes/products/get-products/getProducts.js");
 const editProductRoute = require("./routes/products/edit-product/editProduct.js");
 const deleteProductRoute = require("./routes/products/delete-product/deleteProduct.js");
 // Create express app
@@ -19,6 +20,7 @@ app.use("/api/v1", loginRoute);
 app.use("/api/v1", updateUserRoute);
 app.use("/api/v1", deleteUserRoute);
 app.use("/api/v1", createProductRoute);
+app.use("/api/v1", getProductsRoute);
 app.use("/api/v1", editProductRoute);
 app.use("/api/v1", deleteProductRoute);
 // Listen to port
