@@ -8,6 +8,7 @@ const updateUserRoute = require("./routes/user/update-user/updateUser.js");
 const deleteUserRoute = require("./routes/user/delete-user/deleteUser.js");
 const createProductRoute = require("./routes/products/create-product/createProduct.js");
 const editProductRoute = require("./routes/products/edit-product/editProduct.js");
+const deleteProductRoute = require("./routes/products/delete-product/deleteProduct.js");
 // Create express app
 const app = express();
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use("/api/v1", updateUserRoute);
 app.use("/api/v1", deleteUserRoute);
 app.use("/api/v1", createProductRoute);
 app.use("/api/v1", editProductRoute);
+app.use("/api/v1", deleteProductRoute);
 // Listen to port
 const port = process.env.PORT || 5000;
 app.listen(port, "localhost", () => {
