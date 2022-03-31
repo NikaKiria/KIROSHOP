@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
     req.user = verifiedToken.email;
     next();
   } catch (err) {
-    console.log(err.message);
+    return res.status(500).json("Bad Request!");
   }
 };
 
