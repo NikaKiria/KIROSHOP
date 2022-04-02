@@ -10,10 +10,10 @@ const createProductRoute = require("./routes/products/create-product/createProdu
 const getProductsRoute = require("./routes/products/get-products/getProducts.js");
 const editProductRoute = require("./routes/products/edit-product/editProduct.js");
 const deleteProductRoute = require("./routes/products/delete-product/deleteProduct.js");
+const createOrderRoute = require("./routes/orders/create-order/createOrder.js");
 // Create express app
 const app = express();
 app.use(express.json());
-
 // Routes
 app.use("/api/v1", registerRouter);
 app.use("/api/v1", loginRoute);
@@ -21,6 +21,7 @@ app.use("/api/v1", updateUserRoute);
 app.use("/api/v1", deleteUserRoute);
 app.use("/api/v1", createProductRoute);
 app.use("/api/v1", getProductsRoute);
+app.use("/api/v1", createOrderRoute);
 app.use("/api/v1", editProductRoute);
 app.use("/api/v1", deleteProductRoute);
 // Listen to port
