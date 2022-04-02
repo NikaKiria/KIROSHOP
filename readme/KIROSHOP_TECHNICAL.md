@@ -2,7 +2,7 @@
 
 ### Short Description:
 
-##### KIROSHOP is a simple ecommerce api built using express.
+- KIROSHOP is a simple ecommerce admin panel api built using express.
 
 ### Used Technologies:
 
@@ -13,8 +13,22 @@
 - joi
 - escape-html
 - bcrypt
-- uuid
 - eslint
 - prettier
 
-##### author: Nika Kiria.
+### UX
+
+- User
+  - Register
+  - Login
+  - Edit User Info
+  - Delete user
+- Order
+  - Create Order
+  - Get Orders
+  - Delete Order
+- Product
+  - Create Product
+  - Edit Product
+  - Delete Product
+  - Get Products
